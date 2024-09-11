@@ -6,7 +6,7 @@ public class PlaytipusMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     private float moveSpeed = 5;
-    private float punchingForce = 100;
+    private float punchingForce = 1000;
     private float jumpingForce = 600;
     void Update()
     {
