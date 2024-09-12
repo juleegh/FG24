@@ -8,7 +8,6 @@ public class SpiderPigMovement : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Vector3 position1;
     [SerializeField] private Vector3 position2;
-    [SerializeField] private Transform playerTransform;
     private Vector3 currentDestination;
     void Start()
     {
@@ -18,7 +17,7 @@ public class SpiderPigMovement : MonoBehaviour
 
     private void Update()
     {
-        FollowPlayer();
+
     }
 
     private void Patrol()
@@ -39,6 +38,6 @@ public class SpiderPigMovement : MonoBehaviour
 
     private void FollowPlayer()
     {
-        agent.SetDestination(playerTransform.position);
+        agent.SetDestination(PlaytipusMovement.GetInstance().transform.position);
     }
 }

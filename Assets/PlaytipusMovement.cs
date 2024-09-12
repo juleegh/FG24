@@ -4,11 +4,31 @@ using UnityEngine;
 
 public class PlaytipusMovement : MonoBehaviour
 {
+    private static PlaytipusMovement instance;
+
     [SerializeField] private Rigidbody rb;
     private float moveSpeed = 5;
     private float punchingForce = 1000;
     private float jumpingForce = 600;
     private int repelents = 0;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public static PlaytipusMovement GetInstance()
+    {
+        return instance;
+    }
+
     void Update()
     {
         transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
@@ -42,7 +62,13 @@ public class PlaytipusMovement : MonoBehaviour
     private bool IsTouchingFloor()
     {
         RaycastHit hit;
-        return Physics.SphereCast(transform.position, 0.65f, -transform.up, out hit, 1f);
+        return Physics.SphereCast(transform.position, 0.75f, -transform.up, out hit, 1f);
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 0.75f);
     }
 
     public void IncreaseRepelentAmount()
