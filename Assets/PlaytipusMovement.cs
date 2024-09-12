@@ -18,7 +18,7 @@ public class PlaytipusMovement : MonoBehaviour
         {
             RaycastHit hitResult;
             bool hit = Physics.Raycast(transform.position, transform.forward, out hitResult, 3f);
-            if (hit)
+            if (hit && hitResult.rigidbody != null)
             {
                 if (repelents <= 0)
                 {
@@ -41,9 +41,8 @@ public class PlaytipusMovement : MonoBehaviour
 
     private bool IsTouchingFloor()
     {
-        Vector3 position = transform.position + Vector3.down * 0.5f;
         RaycastHit hit;
-        return Physics.SphereCast(transform.position, 0.5f, -transform.up, out hit, 1f);
+        return Physics.SphereCast(transform.position, 0.65f, -transform.up, out hit, 1f);
     }
 
     public void IncreaseRepelentAmount()
