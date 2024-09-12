@@ -8,6 +8,7 @@ public class PlaytipusMovement : MonoBehaviour
     private float moveSpeed = 5;
     private float punchingForce = 1000;
     private float jumpingForce = 600;
+    private int repelents = 0;
     void Update()
     {
         transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
@@ -19,7 +20,15 @@ public class PlaytipusMovement : MonoBehaviour
             bool hit = Physics.Raycast(transform.position, transform.forward, out hitResult, 3f);
             if (hit)
             {
-                hitResult.rigidbody.AddForce(transform.forward * punchingForce);
+                if (repelents <= 0)
+                {
+                    hitResult.rigidbody.AddForce(transform.forward * punchingForce);
+                }
+                else
+                {
+                    repelents -= 0;
+                    Destroy(hitResult.rigidbody.gameObject);
+                }
             }
         }
 
@@ -35,5 +44,10 @@ public class PlaytipusMovement : MonoBehaviour
         Vector3 position = transform.position + Vector3.down * 0.5f;
         RaycastHit hit;
         return Physics.SphereCast(transform.position, 0.5f, -transform.up, out hit, 1f);
+    }
+
+    public void IncreaseRepelentAmount()
+    {
+        repelents += 1;
     }
 }
