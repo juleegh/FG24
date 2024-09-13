@@ -52,7 +52,7 @@ public class PlaytipusMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.X) && IsTouchingFloor() == true)
+        if (IsTouchingFloor() && Input.GetKeyDown(KeyCode.X))
         {
             rb.AddForce(Vector3.up * jumpingForce);
         }
@@ -62,13 +62,15 @@ public class PlaytipusMovement : MonoBehaviour
     private bool IsTouchingFloor()
     {
         RaycastHit hit;
-        return Physics.SphereCast(transform.position, 0.75f, -transform.up, out hit, 1f);
+        bool result = Physics.SphereCast(transform.position - Vector3.up * 0.45f, 0.3f, transform.up, out hit, 1f);
+        Debug.LogError(result);
+        return result;
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 0.75f);
+        Gizmos.DrawSphere(transform.position - Vector3.up * 0.45f, 0.3f);
     }
 
     public void IncreaseRepelentAmount()
