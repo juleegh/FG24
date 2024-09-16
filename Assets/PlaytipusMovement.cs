@@ -8,6 +8,7 @@ public class PlaytipusMovement : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
     private float moveSpeed = 5;
+    private float rotateSpeed = 50;
     private float punchingForce = 1000;
     private float jumpingForce = 600;
     private int repelents = 0;
@@ -31,8 +32,8 @@ public class PlaytipusMovement : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime);
-        transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime);
+        transform.Translate(transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime, Space.World);
+        transform.Rotate(transform.up * Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -62,8 +63,7 @@ public class PlaytipusMovement : MonoBehaviour
     private bool IsTouchingFloor()
     {
         RaycastHit hit;
-        bool result = Physics.SphereCast(transform.position - Vector3.up * 0.45f, 0.3f, transform.up, out hit, 1f);
-        Debug.LogError(result);
+        bool result = Physics.SphereCast(transform.position, 0.15f, -transform.up, out hit, 1f);
         return result;
     }
 
