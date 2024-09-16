@@ -820,6 +820,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1031842677475499766}
   animator: {fileID: 3150460542996811578}
+  bodyColor: {r: 0, g: 0, b: 0, a: 0}
+  meshRenderer: {fileID: 6536344138587011574}
 --- !u!95 &3150460542996811578
 Animator:
   serializedVersion: 7
