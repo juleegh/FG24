@@ -7,6 +7,7 @@ public class PlaytipusMovement : MonoBehaviour
     private static PlaytipusMovement instance;
 
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Animator animator;
     private float moveSpeed = 5;
     private float rotateSpeed = 50;
     private float punchingForce = 1000;
@@ -34,6 +35,8 @@ public class PlaytipusMovement : MonoBehaviour
     {
         transform.Translate(transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime, Space.World);
         transform.Rotate(transform.up * Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime);
+        bool ImWalking = Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0;
+        animator.SetBool("IsWalking", ImWalking);
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

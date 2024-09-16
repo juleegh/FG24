@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3072752292039507258}
   - component: {fileID: 4824080370942796533}
   m_Layer: 0
-  m_Name: Leg
+  m_Name: Leg-FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 8325352708213488234}
   - component: {fileID: 8381362228280114057}
   m_Layer: 0
-  m_Name: Leg (2)
+  m_Name: Leg-FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 539445302543480975}
   - component: {fileID: 1445299735334481493}
   m_Layer: 0
-  m_Name: Leg (1)
+  m_Name: Leg-BR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 5726626456046312502}
   - component: {fileID: 1031842677475499766}
   - component: {fileID: 4106855381893668656}
+  - component: {fileID: 3150460542996811578}
   m_Layer: 0
   m_Name: Platypus
   m_TagString: Untagged
@@ -818,6 +819,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1031842677475499766}
+  animator: {fileID: 3150460542996811578}
+--- !u!95 &3150460542996811578
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758130187432088790}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f25494d70ab439842be7eda8770f8fa7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8153891125597220346
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +948,7 @@ GameObject:
   - component: {fileID: 306061745710194111}
   - component: {fileID: 6169420879460272782}
   m_Layer: 0
-  m_Name: Leg (3)
+  m_Name: Leg-BL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
