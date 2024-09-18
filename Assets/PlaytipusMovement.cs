@@ -35,7 +35,6 @@ public class PlaytipusMovement : MonoBehaviour
 
     void Update()
     {
-        meshRenderer.material.color = bodyColor;
         transform.Translate(transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime, Space.World);
         transform.Rotate(transform.up * Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime);
         bool ImWalking = Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0;
@@ -50,6 +49,10 @@ public class PlaytipusMovement : MonoBehaviour
                 if (repelents <= 0)
                 {
                     hitResult.rigidbody.AddForce(transform.forward * punchingForce);
+                    if (hitResult.rigidbody.GetComponent<HealthBarPig>() != null)
+                    {
+                        hitResult.rigidbody.GetComponent<HealthBarPig>().GetHit();
+                    }
                 }
                 else
                 {
@@ -59,11 +62,28 @@ public class PlaytipusMovement : MonoBehaviour
             }
         }
 
-        if (IsTouchingFloor() && Input.GetKeyDown(KeyCode.X))
+        MarkWeakestPig();
+    }
+
+    private void MarkWeakestPig()
+    {
+        float minHealth = 500;
+        HealthBarPig weakestPig = null;
+
+        HealthBarPig[] pigs = GameObject.FindObjectsByType<HealthBarPig>(FindObjectsSortMode.None);
+        foreach (HealthBarPig pig in pigs)
         {
-            rb.AddForce(Vector3.up * jumpingForce);
+            if (pig.GetHealth() <= minHealth)
+            {
+                weakestPig = pig;
+                minHealth = pig.GetHealth();
+            }
         }
 
+        foreach (HealthBarPig pig in pigs)
+        {
+            pig.ToggleMarker(pig == weakestPig);
+        }
     }
 
     private bool IsTouchingFloor()
