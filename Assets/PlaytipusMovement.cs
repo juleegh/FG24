@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlaytipusMovement : MonoBehaviour
 {
+    public delegate void PlatipusActions();
+
+    public static event PlatipusActions LowOnHealth;
+    public static event PlatipusActions GotBugSpray;
+
     private static PlaytipusMovement instance;
 
     [SerializeField] private Rigidbody rb;
@@ -11,6 +16,7 @@ public class PlaytipusMovement : MonoBehaviour
     [SerializeField] public Color bodyColor;
     [SerializeField] public MeshRenderer meshRenderer;
     private float moveSpeed = 5;
+    private float health = 500;
     private float rotateSpeed = 50;
     private float punchingForce = 1000;
     private float jumpingForce = 600;
@@ -93,6 +99,18 @@ public class PlaytipusMovement : MonoBehaviour
         return result;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<SpiderPigMovement>() != null)
+        {
+            health -= 50;
+            if (health < 400)
+            {
+                LowOnHealth();
+            }
+        }
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -102,5 +120,6 @@ public class PlaytipusMovement : MonoBehaviour
     public void IncreaseRepelentAmount()
     {
         repelents += 1;
+        GotBugSpray();
     }
 }
