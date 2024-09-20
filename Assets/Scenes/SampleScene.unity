@@ -1140,6 +1140,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1016411830}
     - target: {fileID: 880290690952953086, guid: c6e36fddd8f41a148b19f5d31aaf685e, type: 3}
+      propertyPath: pigProperties
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b4a36f105b2d044b9b48ab58cb55771, type: 2}
+    - target: {fileID: 880290690952953086, guid: c6e36fddd8f41a148b19f5d31aaf685e, type: 3}
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 85786772}
@@ -1738,6 +1742,10 @@ PrefabInstance:
       propertyPath: position2
       value: 
       objectReference: {fileID: 1016411830}
+    - target: {fileID: 880290690952953086, guid: c6e36fddd8f41a148b19f5d31aaf685e, type: 3}
+      propertyPath: pigProperties
+      value: 
+      objectReference: {fileID: 11400000, guid: 28de8396810aed44599d362716ff5f95, type: 2}
     - target: {fileID: 880290690952953086, guid: c6e36fddd8f41a148b19f5d31aaf685e, type: 3}
       propertyPath: playerTransform
       value: 
@@ -3164,6 +3172,10 @@ PrefabInstance:
       propertyPath: position2
       value: 
       objectReference: {fileID: 1588709022}
+    - target: {fileID: 880290690952953086, guid: c6e36fddd8f41a148b19f5d31aaf685e, type: 3}
+      propertyPath: pigProperties
+      value: 
+      objectReference: {fileID: 11400000, guid: 28de8396810aed44599d362716ff5f95, type: 2}
     - target: {fileID: 880290690952953086, guid: c6e36fddd8f41a148b19f5d31aaf685e, type: 3}
       propertyPath: playerTransform
       value: 
