@@ -21,6 +21,7 @@ public class PlaytipusMovement : MonoBehaviour
     private float punchingForce = 1000;
     private float jumpingForce = 600;
     private int repelents = 0;
+    private int totalJumps = 0;
 
     private void Awake()
     {
@@ -121,5 +122,14 @@ public class PlaytipusMovement : MonoBehaviour
     {
         repelents += 1;
         GotBugSpray();
+    }
+
+    public PigTacticalInfo GetTacticalInformation()
+    {
+        PigTacticalInfo info = new PigTacticalInfo();
+        info.currentPositionOfThePlayer = transform.position;
+        info.playerBugSprays = repelents;
+        info.playerJumps = totalJumps;
+        return info;
     }
 }

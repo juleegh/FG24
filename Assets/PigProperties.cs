@@ -6,6 +6,7 @@ public class PigProperties : ScriptableObject
     [SerializeField] private Color maskColor;
     [SerializeField] private float walkingSpeed;
     [SerializeField] private string codeName;
+    [SerializeField] private bool badPig;
 
     public float WalkingSpeed()
     {
@@ -20,5 +21,10 @@ public class PigProperties : ScriptableObject
     public string CodeName()
     {
         return codeName;
+    }
+
+    public bool BadPig()
+    {
+        return badPig;
     }
 }

@@ -13,7 +13,7 @@ public class SpiderPigMovement : MonoBehaviour
     [SerializeField] private MeshRenderer mask;
     [SerializeField] private TextMeshProUGUI pigName;
     private Vector3 currentDestination;
-    private bool isChasing = false;
+    private PigStates pigStates = PigStates.Patroling;
 
     private void Awake()
     {
@@ -32,21 +32,21 @@ public class SpiderPigMovement : MonoBehaviour
 
     private void StartChasing()
     {
-        isChasing = true;
+        pigStates = PigStates.Chasing;
     }
 
     private void StartPatroling()
     {
-        isChasing = false;
+        pigStates = PigStates.Patroling;
     }
 
     private void Update()
     {
-        if (isChasing)
+        if (pigStates == PigStates.Chasing)
         {
             FollowPlayer();
         }
-        else
+        else if(pigStates == PigStates.Patroling)
         {
             Patrol();
         }
@@ -65,6 +65,14 @@ public class SpiderPigMovement : MonoBehaviour
                 currentDestination = position1.position;
             }
             agent.SetDestination(currentDestination);
+        }
+    }
+
+    public void ReactToCurrentState(PigTacticalInfo information)
+    {
+        if (Vector3.Distance(information.currentPositionOfThePlayer, transform.position) < 2)
+        {
+            // X, Y, Z
         }
     }
 
